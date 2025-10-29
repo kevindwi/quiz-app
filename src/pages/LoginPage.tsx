@@ -5,7 +5,8 @@ const LoginPage = () => {
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     if (name.trim()) {
       localStorage.setItem("user", name);
       navigate("/quiz");
@@ -13,10 +14,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center h-screen bg-[#76acdb]">
-      <div className="flex justify-center items-center w-md bg-white">
-        <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8">
-          <form className="space-y-6" action="#">
+    <div className="min-h-screen flex items-center justify-center bg-sky-100">
+      <div className="w-md min-h-screen flex items-center justify-center bg-white">
+        <div className="w-xs sm:w-sm bg-white border border-gray-300/60 rounded-2xl p-6 m-6">
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div className="flex flex-col items-center gap-y-3">
               <h5 className="text-2xl font-medium text-gray-900">Quiz App</h5>
               <p className="text-sm text-gray-500">
@@ -34,7 +35,7 @@ const LoginPage = () => {
                 type="text"
                 name="name"
                 id="name"
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Your name"
                 required
                 onChange={(e) => setName(e.target.value)}
@@ -42,8 +43,7 @@ const LoginPage = () => {
             </div>
             <button
               type="submit"
-              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-              onClick={handleLogin}
+              className="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center"
             >
               Start Quiz
             </button>
