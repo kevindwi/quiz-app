@@ -5,7 +5,7 @@ const LoginPage = () => {
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim()) {
       localStorage.setItem("user", name);
